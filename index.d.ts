@@ -25,6 +25,64 @@
  * @function
  */
 export function attribute(name?: string): PropertyDecorator;
+/**
+ * Decorator which indicates that the field or computed should be bound
+ * to an attribute value on the component. This replaces `attributeBindings`
+ * by directly allowing you to specify which properties should be bound.
+ *
+ * ```js
+ * import Component from '@ember/component';
+ * import { attribute } from 'ember-decorators/component';
+ * import { computed } from 'ember-decorators/object';
+ *
+ * export default class AttributeDemoComponent extends Component {
+ *   @attribute role = 'button';
+ *
+ *   // With provided attribute name
+ *   @attribute('data-foo') foo = 'lol';
+ *
+ *   @attribute
+ *   @computed
+ *   get id() {
+ *     // return generated id
+ *   }
+ * }
+ * ```
+ *
+ * @function
+ */
+export function attribute(
+  target: any,
+  key: any,
+  descriptor: PropertyDescriptor
+): PropertyDescriptor;
+/**
+ * Decorator which indicates that the field or computed should be bound
+ * to an attribute value on the component. This replaces `attributeBindings`
+ * by directly allowing you to specify which properties should be bound.
+ *
+ * ```js
+ * import Component from '@ember/component';
+ * import { attribute } from 'ember-decorators/component';
+ * import { computed } from 'ember-decorators/object';
+ *
+ * export default class AttributeDemoComponent extends Component {
+ *   @attribute role = 'button';
+ *
+ *   // With provided attribute name
+ *   @attribute('data-foo') foo = 'lol';
+ *
+ *   @attribute
+ *   @computed
+ *   get id() {
+ *     // return generated id
+ *   }
+ * }
+ * ```
+ *
+ * @function
+ */
+export function attribute(target: any, key: any): any;
 
 /**
  * Decorator which indicates that the field or computed should be bound to
@@ -52,10 +110,67 @@ export function attribute(name?: string): PropertyDecorator;
  *
  * @function
  */
-export function className(): PropertyDecorator;
+export function className(target: any, key: any): any;
+/**
+ * Decorator which indicates that the field or computed should be bound to
+ * the component class names. This replaces `classNameBindings` by directly
+ * allowing you to specify which properties should be bound.
+ *
+ * ```js
+ * import Component from '@ember/component';
+ * import { className } from 'ember-decorators/component';
+ * import { computed } from 'ember-decorators/object';
+ *
+ * export default class ClassNameDemoComponent extends Component {
+ *   @className boundField = 'default-class';
+ *
+ *   // With provided true/false class names
+ *   @className('active', 'inactive') isActive = true;
+ *
+ *   @className
+ *   @computed
+ *   get boundComputed() {
+ *     // return generated class
+ *   }
+ * }
+ * ```
+ *
+ * @function
+ */
 export function className(
-  trueValue: string,
-  falseValue: string
+  target: any,
+  key: any,
+  descriptor: PropertyDescriptor
+): PropertyDescriptor;
+/**
+ * Decorator which indicates that the field or computed should be bound to
+ * the component class names. This replaces `classNameBindings` by directly
+ * allowing you to specify which properties should be bound.
+ *
+ * ```js
+ * import Component from '@ember/component';
+ * import { className } from 'ember-decorators/component';
+ * import { computed } from 'ember-decorators/object';
+ *
+ * export default class ClassNameDemoComponent extends Component {
+ *   @className boundField = 'default-class';
+ *
+ *   // With provided true/false class names
+ *   @className('active', 'inactive') isActive = true;
+ *
+ *   @className
+ *   @computed
+ *   get boundComputed() {
+ *     // return generated class
+ *   }
+ * }
+ * ```
+ *
+ * @function
+ */
+export function className(
+  trueValue?: string,
+  falseValue?: string
 ): PropertyDecorator;
 
 /**
